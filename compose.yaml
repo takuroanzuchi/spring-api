@@ -1,12 +1,20 @@
 version: '3.8'
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - sample-pg
   #
   # PostgreSQL
   #
   sample-pg:
     image: postgres:14-bullseye
-    container_name: sample-pg
+    container_name: sample-api
     ports:
       - 5432:5432
     environment:
