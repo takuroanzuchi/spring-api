@@ -1,5 +1,7 @@
-package com.example.springapi
+package com.example.springapi.controller
 
+import com.example.springapi.service.CustomerService
+import com.example.springapi.model.Customer
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.springframework.web.bind.annotation.*
 
@@ -7,8 +9,14 @@ import org.springframework.web.bind.annotation.*
 class CustomerController(private val customerService: CustomerService) {
 
     @GetMapping("/customers")
-    fun findAll(): List<Customer> {
-        return customerService.findAll()
+    fun findAll(): List<CustomerResponse> {
+        return customerService.findAll().map {
+            CustomerResponse(
+                id = it.id,
+                firstName = it.firstName,
+                lastName = it.lastName
+            )
+        }
     }
 
     @GetMapping("/customers/{id}")
@@ -49,5 +57,7 @@ data class CustomerRequest(
  * @property customers
  */
 data class CustomerResponse(
-    val customers: List<Customer>,
+    @JsonProperty("id") val id: Long,
+    @JsonProperty("first_name") val firstName: String,
+    @JsonProperty("last_name") val lastName: String,
 )

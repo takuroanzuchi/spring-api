@@ -1,5 +1,6 @@
-package com.example.springapi
+package com.example.springapi.repository
 
+import com.example.springapi.model.Customer
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Repository
 

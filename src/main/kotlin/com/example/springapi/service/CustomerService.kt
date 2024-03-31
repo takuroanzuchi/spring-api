@@ -1,5 +1,7 @@
-package com.example.springapi
+package com.example.springapi.service
 
+import com.example.springapi.model.Customer
+import com.example.springapi.repository.CustomerRepository
 import org.springframework.stereotype.Service
 
 interface CustomerService {

@@ -1,4 +1,4 @@
-package com.example.springapi
+package com.example.springapi.model
 
 /**
  * Customer data class.
